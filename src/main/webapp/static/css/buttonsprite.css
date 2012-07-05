@@ -1,0 +1,331 @@
+.male {
+    width: 30px;
+    height: 30px;
+    background-position: 0px, 0px;
+    background-image: url('../../site_media/img/gender.gif');
+}
+
+.female {
+    width: 30px;
+    height: 30px;
+    background-position: -30px, 0px;
+    background-image: url('../../site_media/img/gender.gif');
+}
+
+.btnBorder {
+    border-top: 1px solid #06c1ff;
+    border-left: 1px solid #06c1ff;
+    border-bottom: 1px solid #06c1ff;
+}
+
+.btnBorderEnd {
+    border-top: 1px solid #06c1ff;
+    border-left: 1px solid #06c1ff;
+    border-bottom: 1px solid #06c1ff;
+    border-right: 1px solid #06c1ff;
+}
+
+.btnNew {
+    width: 50px;
+    height: 50px;
+    background-position: 0px, 0px;
+    cursor: none;
+    background-image: url('../../site_media/img/sprite_crud_hover.gif');
+    display: inline-block;
+}
+
+.btnNew:hover {
+    border-color: #c47dfb;
+    width: 50px;
+    height: 50;
+    background-position: 0px, 0px;
+    cursor: pointer;
+    background-image: url('../../site_media/img/sprite_crud.gif');
+    display: inline-block;
+}
+
+.btnEdit {
+    width: 50px;
+    height: 50px;
+    background-position: -50px, 0px;
+    cursor: none;
+    background-image: url('../../site_media/img/sprite_crud_hover.gif');
+    display: inline-block;
+}
+
+.btnEdit:hover {
+    border-color: #c47dfb;
+    width: 50px;
+    height: 50;
+    background-position: -50px, 0px;
+    cursor: pointer;
+    background-image: url('../../site_media/img/sprite_crud.gif');
+    display: inline-block;
+}
+
+.btnLookup {
+    width: 50px;
+    height: 50px;
+    background-position: -100px, 0px;
+    cursor: none;
+    background-image: url('../../site_media/img/sprite_crud_hover.gif');
+    display: inline-block;
+}
+
+.btnLookup:hover {
+    border-color: #c47dfb;
+    width: 50px;
+    height: 50;
+    background-position: -100px, 0px;
+    cursor: pointer;
+    background-image: url('../../site_media/img/sprite_crud.gif');
+    display: inline-block;
+}
+
+.btnDel {
+    width: 50px;
+    height: 50px;
+    background-position: -150px, 0px;
+    cursor: none;
+    background-image: url('../../site_media/img/sprite_crud_hover.gif');
+    display: inline-block;
+}
+
+.btnDel:hover {
+    border-color: #c47dfb;
+    width: 50px;
+    height: 50;
+    background-position: -150px, 0px;
+    cursor: pointer;
+    background-image: url('../../site_media/img/sprite_crud.gif');
+    display: inline-block;
+}
+
+.btnSimpan {
+    width: 50px;
+    height: 50px;
+    background-position: -200px, 0px;
+    cursor: none;
+    background-image: url('../../site_media/img/sprite_crud_hover.gif');
+    display: inline-block;
+}
+
+.btnSimpan:hover {
+    border-color: #c47dfb;
+    width: 50px;
+    height: 50;
+    background-position: -200px, 0px;
+    cursor: pointer;
+    background-image: url('../../site_media/img/sprite_crud.gif');
+    display: inline-block;
+}
+
+.btnRefresh {
+    width: 50px;
+    height: 50px;
+    background-position: -300px, 0px;
+    cursor: none;
+    background-image: url('../../site_media/img/sprite_crud_hover.gif');
+    display: inline-block;
+}
+
+.btnRefresh:hover {
+    border-color: #c47dfb;
+    width: 50px;
+    height: 50px;
+    background-position: -300px, 0px;
+    cursor: pointer;
+    background-image: url('../../site_media/img/sprite_crud.gif');
+    display: inline-block;
+}
+
+.btnShow {
+    width: 50px;
+    height: 50px;
+    background-position: -250px, 0px;
+    cursor: none;
+    background-image: url('../../site_media/img/sprite_crud_hover.gif');
+    display: inline-block;
+}
+
+.btnShow:hover {
+    border-color: #c47dfb;
+    width: 50px;
+    height: 50px;
+    background-position: -250px, 0px;
+    cursor: pointer;
+    background-image: url('../../site_media/img/sprite_crud.gif');
+    display: inline-block;
+}
+
+.greditornext {
+    width: 20px;
+    height: 20px;
+    background-position: -24px -24px;
+    cursor: pointer;
+    background-image: url('../../site_media/img/greditor.gif');
+    display: inline-block;
+}
+
+.greditornext:hover {
+    width: 20px;
+    height: 20px;
+    background-position: -24px -2px;
+    cursor: pointer;
+    background-image: url('../../site_media/img/greditor.gif');
+    display: inline-block;
+}
+
+.greditorprev {
+    width: 20px;
+    height: 20px;
+    background-position: -2px -24px;
+    cursor: pointer;
+    background-image: url('../../site_media/img/greditor.gif');
+    display: inline-block;
+}
+
+.greditorprev:hover {
+    width: 20px;
+    height: 20px;
+    background-position: -2px -2px;
+    cursor: pointer;
+    background-image: url('../../site_media/img/greditor.gif');
+    display: inline-block;
+}
+
+.greditoradd {
+    width: 20px;
+    height: 20px;
+    background-position: -46px -24px;
+    margin-top: 0px;
+    cursor: pointer;
+    background-image: url('../../site_media/img/greditor.gif');
+    display: block;
+    text-indent: -9999px;
+}
+
+.greditoradd:hover {
+    width: 20px;
+    height: 20px;
+    background-position: -46px -2px;
+    margin-top: 0px;
+    cursor: pointer;
+    background-image: url('../../site_media/img/greditor.gif');
+    display: block;
+    text-indent: -9999px;
+}
+
+.greditorseek {
+    width: 20px;
+    height: 20px;
+    background-position: -90px -24px;
+    margin-top: 0px;
+    cursor: pointer;
+    background-image: url('../../site_media/img/greditor.gif');
+    display: block;
+    text-indent: -9999px;
+}
+
+.greditorseek:hover {
+    width: 20px;
+    height: 20px;
+    background-position: -90px -2px;
+    margin-top: 0px;
+    cursor: pointer;
+    background-image: url('../../site_media/img/greditor.gif');
+    display: block;
+    text-indent: -9999px;
+}
+
+.greditordel {
+    width: 20px;
+    height: 20px;
+    background-position: -68px -24px;
+    margin-top: 0px;
+    cursor: pointer;
+    background-image: url('../../site_media/img/greditor.gif');
+    display: block;
+    text-indent: -9999px;
+}
+
+.greditordel:hover {
+    width: 20px;
+    height: 20px;
+    background-position: -68px -2px;
+    margin-top: 0px;
+    cursor: pointer;
+    background-image: url('../../site_media/img/greditor.gif');
+    display: block;
+    text-indent: -9999px;
+}
+
+.greditorrefresh {
+    width: 20px;
+    height: 20px;
+    background-position: -112px -24px;
+    margin-top: 0px;
+    cursor: pointer;
+    background-image: url('../../site_media/img/greditor.gif');
+    display: block;
+    text-indent: -9999px;
+}
+
+.greditorrefresh:hover {
+    width: 20px;
+    height: 20px;
+    background-position: -112px -2px;
+    margin-top: 0px;
+    cursor: pointer;
+    background-image: url('../../site_media/img/greditor.gif');
+    display: block;
+    text-indent: -9999px;
+}
+
+.greditorsave {
+    width: 20px;
+    height: 20px;
+    background-position: -134px -24px;
+    margin-top: 0px;
+    cursor: pointer;
+    background-image: url('../../site_media/img/greditor.gif');
+    display: inline-block;
+    text-indent: -9999px;
+}
+
+.greditorsave:hover {
+    width: 20px;
+    height: 20px;
+    background-position: -134px -2px;
+    margin-top: 0px;
+    cursor: pointer;
+    background-image: url('../../site_media/img/greditor.gif');
+    display: inline-block;
+    text-indent: -9999px;
+}
+
+.greditorcancel {
+    width: 20px;
+    height: 20px;
+    background-position: -156px -24px;
+    margin-top: 0px;
+    cursor: pointer;
+    background-image: url('../../site_media/img/greditor.gif');
+    display: inline-block;
+    text-indent: -9999px;
+}
+
+.greditorcancel:hover {
+    width: 20px;
+    height: 20px;
+    background-position: -156px -2px;
+    margin-top: 0px;
+    cursor: pointer;
+    background-image: url('../../site_media/img/greditor.gif');
+    display: inline-block;
+    text-indent: -9999px;
+}
+
+.centrimage {
+    vertical-align: middle;
+}
