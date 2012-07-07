@@ -56,19 +56,19 @@ require([
             templateString:"<div>" +
                 "<div class='greditorPanelContainer' style='border-top:1px solid #dedede; background-color: #efefef;margin: 0px;padding: 0px'>" +
                 "<span style='text-decoration: underline;font-weight: bold;cursor:pointer' " +
-                "class='btnTbh greditoradd'><img class='centrimage' src='../../site_media/img/spacer_crud.gif' width='20px' height='20px' title='add' alt='tambah'></span> " +
+                "class='btnTbh greditoradd'><img class='centrimage' src='./site_media/img/spacer_crud.gif' width='20px' height='20px' title='add' alt='tambah'></span> " +
                 "<a style='text-decoration: underline;font-weight: bold;cursor:pointer' " +
-                "class='btnHapus greditordel'><img class='centrimage'  src='../../site_media/img/spacer_crud.gif' width='20px' height='20px'></a>&nbsp;" +
+                "class='btnHapus greditordel'><img class='centrimage'  src='./site_media/img/spacer_crud.gif' width='20px' height='20px'></a>&nbsp;" +
                 "<span style='text-decoration: underline;font-weight: bold;cursor:pointer' " +
-                "class='btnSeek greditorseek'><img class='centrimage'  src='../../site_media/img/spacer_crud.gif' width='20px' height='20px'></span>&nbsp;" +
+                "class='btnSeek greditorseek'><img class='centrimage'  src='./site_media/img/spacer_crud.gif' width='20px' height='20px'></span>&nbsp;" +
                 "<span style='text-decoration: underline;font-weight: bold;cursor:pointer' " +
-                "class='btnRefrez greditorrefresh'><img class='centrimage'  src='../../site_media/img/spacer_crud.gif' width='20px' height='20px'></span>&nbsp;&nbsp;&nbsp;&nbsp;" +
+                "class='btnRefrez greditorrefresh'><img class='centrimage'  src='./site_media/img/spacer_crud.gif' width='20px' height='20px'></span>&nbsp;&nbsp;&nbsp;&nbsp;" +
                 "<a style='text-decoration: underline;font-weight: bold;cursor:pointer' " +
-                "class='btnPrev greditorprev'><img class='centrimage'  src='../../site_media/img/spacer_crud.gif' width='20px' height='20px'></a>&nbsp;&nbsp;" +
+                "class='btnPrev greditorprev'><img class='centrimage'  src='./site_media/img/spacer_crud.gif' width='20px' height='20px'></a>&nbsp;&nbsp;" +
                 "<input  style='width:30px;' class='centrimage' value='1' name='currentpage'>" +
                 "<span class='pagelabel'> of 0</span> " +
                 "<a style='text-decoration: underline;font-weight: bold;cursor:pointer' " +
-                "class='btnNext greditornext'><img class='centrimage'  src='../../site_media/img/spacer_crud.gif' width='20px' height='20px'></a>&nbsp;&nbsp;" +
+                "class='btnNext greditornext'><img class='centrimage'  src='./site_media/img/spacer_crud.gif' width='20px' height='20px'></a>&nbsp;&nbsp;" +
                 "</div>" +
                 "<div class='gridPan'></div>" +
                 "</div>",

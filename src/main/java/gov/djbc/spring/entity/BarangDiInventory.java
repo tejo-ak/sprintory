@@ -5,7 +5,9 @@
 package gov.djbc.spring.entity;
 
 import java.io.Serializable;
+import java.util.List;
 import javax.persistence.*;
+import org.codehaus.jackson.annotate.JsonIgnore;
 
 /**
  *
@@ -21,6 +23,9 @@ public class BarangDiInventory implements Serializable {
     private Barang barang;
     @ManyToOne(fetch = FetchType.EAGER)
     private Inventory inventory;
+    @JsonIgnore
+    @OneToMany(mappedBy = "barang", targetEntity = LayerStock.class)
+    private List<LayerStock> layers;
 
     public Barang getBarang() {
         return barang;
@@ -36,5 +41,17 @@ public class BarangDiInventory implements Serializable {
 
     public void setId(Long id) {
         this.id = id;
+    }
+
+    public List<LayerStock> getLayers() {
+        return layers;
+    }
+
+    public Inventory getInventory() {
+        return inventory;
+    }
+
+    public void setInventory(Inventory inventory) {
+        this.inventory = inventory;
     }
 }

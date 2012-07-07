@@ -30,7 +30,7 @@ define(['dojo',
             },
             prepareGreditor:function () {
                 if (!dojote.cekWidget(this.formGreditor)) {
-                    dojote.callXhrGet('/site_media/lib/GreditorTesHtml.html', {}, dojo.hitch(this, function (e) {
+                    dojote.callXhrGet('./site_media/lib/GreditorTesHtml.html', {}, dojo.hitch(this, function (e) {
                         this.formGreditor = tabUtil.putinFirstTab('Greditor', e)
                         this.prepareGrid();
                     }))

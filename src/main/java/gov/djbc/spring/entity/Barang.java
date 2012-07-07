@@ -43,6 +43,14 @@ public class Barang implements Serializable {
     @JsonIgnore(value = true)
     @OneToMany(targetEntity = BarangDiInventory.class, mappedBy = "barang")
     private List<BarangDiInventory> barangs;
+    @JsonIgnore(value = true)
+    @OneToMany(targetEntity = LogHarga.class, mappedBy = "barang")
+    private List<LogHarga> logharga;
+    @JsonIgnore(value = true)
+    @OneToMany(targetEntity = PembelianItem.class, mappedBy = "barang")
+    private List<PembelianItem> dibeli;
+    @OneToMany(targetEntity = BarangDokumenPabean.class, mappedBy = "barang")
+    private List<BarangDokumenPabean> didokumen;
 
     public BigDecimal getHarga() {
         return harga;
@@ -102,5 +110,13 @@ public class Barang implements Serializable {
 
     public List<BarangDiInventory> getBarangs() {
         return barangs;
+    }
+
+    public List<LogHarga> getLogharga() {
+        return logharga;
+    }
+
+    public List<PembelianItem> getDibeli() {
+        return dibeli;
     }
 }

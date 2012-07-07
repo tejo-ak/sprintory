@@ -51,7 +51,7 @@ define(['dojo',
             { menu:'Upload Barang', menuId:'mn001', eventId:'onMenuUploadBarang', modul:'mod/ivt/BarangMgt', arg:[
                 {nocrud:true, sider:'sider', detail:'upload'}
             ]},
-            { menu:'Browse Barang', menuId:'mn002', eventId:'onMenuPencarianBarang', modul:'mod/ivt/BarangMgt', arg:[
+            { menu:'Browse Barang', menuId:'mn002', eventId:'onMenuPencarianBarang', modul:'mod/ivt/BarangBrowse', arg:[
                 {nocrud:false, sider:'sider', detail:'view'}
             ]},
             { menu:'Supplier MGT', menuId:'mn003', eventId:'', grup:true},

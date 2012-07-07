@@ -33,7 +33,7 @@ define(['dojo',
             var arg = (arg) ? arg : {};
             if (!tabUtil.cekTab(this.formHome)) {
                 this.formHome = tabUtil.putinFirstTab('Home', 'Loading home ...');
-                dojote.callXhrPost('/sprintory/home', {c:'home'}, dojo.hitch(this, function (e) {
+                dojote.callXhrPost('./home', {c:'home'}, dojo.hitch(this, function (e) {
                     if (tabUtil.cekTab(this.formHome)) {
                         this.formHome.set('content', e)
                     }
@@ -82,7 +82,7 @@ define(['dojo',
             var arg = (arg) ? arg : {};
             if (!tabUtil.cekTab(this.formPabean)) {
                 this.formPabean = tabUtil.putinTab('Home', 'Loading home ...');
-                dojote.callXhrPost('/sprintory/pabean', {c:'pabean'}, dojo.hitch(this, function (e) {
+                dojote.callXhrPost('./pabean', {c:'pabean'}, dojo.hitch(this, function (e) {
                     if (tabUtil.cekTab(this.formPabean)) {
                         this.formPabean.set('content', e)
                         this.buildPabean();
