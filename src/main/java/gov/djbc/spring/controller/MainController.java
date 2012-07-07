@@ -4,17 +4,24 @@
  */
 package gov.djbc.spring.controller;
 
+import com.mysema.query.jpa.impl.JPAQuery;
 import com.mysema.query.types.expr.BooleanExpression;
 import com.mysema.query.types.path.StringPath;
 import gov.djbc.spring.entity.Barang;
+import gov.djbc.spring.entity.BarangDiInventory;
 import gov.djbc.spring.entity.QBarang;
 import gov.djbc.spring.fakentity.Referensi;
-import gov.djbc.spring.repository.BarangRepo;
+import gov.djbc.spring.filter.FilterItem;
+import gov.djbc.spring.filter.FilterUtil;
+import gov.djbc.spring.repository.BarangDiInventoryRepository;
+import gov.djbc.spring.repository.BarangRepository;
 
 import java.math.BigDecimal;
-import java.util.HashMap;
-import java.util.Map;
+import java.util.*;
 import javax.inject.Inject;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -30,8 +37,10 @@ import org.springframework.web.servlet.ModelAndView;
 @Controller
 public class MainController {
 
+    @Autowired
+    private BarangRepository repo;
     @Inject
-    private BarangRepo repo;
+    private BarangDiInventoryRepository bdiRepo;
 
     @RequestMapping(value = "/")
     public ModelAndView index() {
@@ -73,12 +82,16 @@ public class MainController {
 
     @RequestMapping(value = "/barang/{nama}/{merk}")
     public @ResponseBody
-    Iterable<Barang> getBarang(@PathVariable String nama, @PathVariable String merk) {
-        QBarang barang = QBarang.barang;
-        StringPath s=barang.nama;
-        BooleanExpression namaSesuai = barang.nama.containsIgnoreCase(nama);
-        BooleanExpression merkSesuai = barang.nama.containsIgnoreCase(merk);
-        return repo.findAll(namaSesuai.and(merkSesuai));
+    Iterable<BarangDiInventory> getBarang(@PathVariable String nama, @PathVariable String merk) {
+        List<FilterItem> fis = Arrays.asList(
+                new FilterItem[]{
+                    FilterUtil.newItem("nama", nama, null, null, false, true, FilterUtil.FTYPE_TEXT)
+                });
+        Iterable<BarangDiInventory> hasil = bdiRepo.filter(fis);
+        Barang bg = hasil.iterator().next().getBarang();
+        System.out.println("hasilnya?" + hasil.toString());
+//        return new FilterItem("alias", nama, new Date(), 5, true, true, merk);
+        return hasil;
     }
 
     @RequestMapping(value = "/jsonmap")

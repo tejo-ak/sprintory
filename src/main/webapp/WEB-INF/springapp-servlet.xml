@@ -31,11 +31,11 @@
     <mvc:default-servlet-handler />
 	
 	<!-- also add the following beans to get rid of some exceptions -->
-    <bean
+        <!-- <bean
         class="org.springframework.web.servlet.mvc.annotation.AnnotationMethodHandlerAdapter" />
     <bean
         class="org.springframework.web.servlet.mvc.annotation.DefaultAnnotationHandlerMapping">
-    </bean>
+    </bean>-->
 
 	<!-- Konfigurasi Template Velocity -->
     <bean id="velocityConfig"
@@ -73,6 +73,7 @@
         <property name="jpaVendorAdapter">
             <bean class="org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter">
                 <property name="generateDdl" value="true" />
+                <property name="showSql" value="true" />
                 <property name="database" value="MYSQL" />
             </bean>
         </property>
