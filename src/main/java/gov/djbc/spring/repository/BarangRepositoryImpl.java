@@ -9,8 +9,8 @@ import com.mysema.query.jpa.sql.JPASQLQuery;
 import com.mysema.query.types.expr.StringExpression;
 import gov.djbc.spring.entity.Barang;
 import gov.djbc.spring.entity.QBarang;
-import gov.djbc.spring.filter.FilterField;
-import gov.djbc.spring.filter.FilterItem;
+import gov.djbc.spring.filter.Fielderable;
+import gov.djbc.spring.filter.Fentry;
 import java.util.ArrayList;
 import java.util.List;
 import org.springframework.data.jpa.repository.support.QueryDslRepositorySupport;
@@ -21,13 +21,13 @@ import org.springframework.data.jpa.repository.support.QueryDslRepositorySupport
  */
 public class BarangRepositoryImpl extends QueryDslRepositorySupport implements BarangRepositoryCustom {
 
-    private static List<FilterField> fields = new ArrayList<FilterField>();
+    private static List<Fielderable> fields = new ArrayList<Fielderable>();
 
     static {
-        fields.add(new FilterField<StringExpression>("nama", QBarang.barang.nama, "like"));
+        fields.add(new Fielderable<StringExpression>("nama", QBarang.barang.nama, "like"));
     }
 
-    public Iterable<Barang> filter(List<FilterItem> filterItem) {
+    public Iterable<Barang> filter(List<Fentry> filterItem) {
         QBarang b = QBarang.barang;
         JPQLQuery q = from(b);
         q.where(QBarang.barang.nama.containsIgnoreCase("susu"));

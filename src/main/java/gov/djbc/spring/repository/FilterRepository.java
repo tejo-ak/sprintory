@@ -4,7 +4,7 @@
  */
 package gov.djbc.spring.repository;
 
-import gov.djbc.spring.filter.FilterItem;
+import gov.djbc.spring.filter.Fentry;
 import java.util.List;
 
 /**
@@ -13,5 +13,5 @@ import java.util.List;
  */
 public interface FilterRepository<B> {
 
-    public Iterable<B> filter(List<FilterItem> filterItem);
+    public Iterable<B> filter(List<Fentry> filterItem);
 }

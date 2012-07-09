@@ -11,7 +11,7 @@ import gov.djbc.spring.entity.Barang;
 import gov.djbc.spring.entity.BarangDiInventory;
 import gov.djbc.spring.entity.QBarang;
 import gov.djbc.spring.fakentity.Referensi;
-import gov.djbc.spring.filter.FilterItem;
+import gov.djbc.spring.filter.Fentry;
 import gov.djbc.spring.filter.FilterUtil;
 import gov.djbc.spring.repository.BarangDiInventoryRepository;
 import gov.djbc.spring.repository.BarangRepository;
@@ -45,7 +45,8 @@ public class MainController {
     @RequestMapping(value = "/")
     public ModelAndView index() {
         Map m = new HashMap();
-        m.put("dj", "http://192.168.204.12:8080/dojocdn171/dojolib");
+//        m.put("dj", "http://192.168.204.12:8080/dojocdn171/dojolib");
+        m.put("dj", "http://localhost:8080/dojocdn171/dojolib");
         m.put("djext", ".js");
         ModelAndView mav = new ModelAndView("sprintory", m);
         return mav;
@@ -83,8 +84,8 @@ public class MainController {
     @RequestMapping(value = "/barang/{nama}/{merk}")
     public @ResponseBody
     Iterable<BarangDiInventory> getBarang(@PathVariable String nama, @PathVariable String merk) {
-        List<FilterItem> fis = Arrays.asList(
-                new FilterItem[]{
+        List<Fentry> fis = Arrays.asList(
+                new Fentry[]{
                     FilterUtil.newItem("nama", nama, null, null, false, true, FilterUtil.FTYPE_TEXT)
                 });
         Iterable<BarangDiInventory> hasil = bdiRepo.filter(fis);

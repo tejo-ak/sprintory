@@ -44,8 +44,8 @@ public class FilterUtil {
     public static String FOPR_ISNULL = "isNull";
     public static String FOPR_ISNOTNULL = "isNotNull";
 
-    public static FilterItem newItem(String alias, String stringValue, Date dateValue, Number numberValue, boolean range, boolean endRange, String type) {
-        FilterItem fi = new FilterItem(alias, stringValue, dateValue, numberValue, range, endRange, type);
+    public static Fentry newItem(String alias, String stringValue, Date dateValue, Number numberValue, boolean range, boolean endRange, String type) {
+        Fentry fi = new Fentry(alias, stringValue, dateValue, numberValue, range, endRange, type);
         return fi;
     }
 
