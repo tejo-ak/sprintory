@@ -13,9 +13,9 @@ define(['dojo',
             this.sidePane = dojo.byId('gridSider');
             this.portainer = dijit.byId('gridContainer');
             this.sidePortainer = dijit.byId('gridSider');
-//        this.portainer.disableDnd();
+            //        this.portainer.disableDnd();
             this.sidePortainer.disableDnd();
-//        this.clearMainPane();
+            //        this.clearMainPane();
 
         },
         to2Dec:function (dec) {
@@ -23,6 +23,15 @@ define(['dojo',
         },
         to4Dec:function (dec) {
             return nomor.format(dec, {pattern:'#,###.####'});
+        },
+        initBrowse:function(){
+            var browseParam={
+                init:true,
+                blank:false,
+                all:true,
+                fentries:[]
+            }  
+            return browseParam;
         },
         toDate:function (date) {
             return dojo.date.locale.format(new Date(date), {selector:"date", datePattern:'dd-MMM-yyyy' });
@@ -141,16 +150,16 @@ define(['dojo',
                     errorFlag = (errorFlag) ? errorFlag : 'Error';
                     alert(errorFlag + '\n' + e.message);
                 }
-                }
-            )
+            }
+        )
         },
         callXhrPost:function (url, content, load, errorFlag) {
             dojo.xhrPost({url:url, content:content, load:load, error:function (e) {
                     errorFlag = (errorFlag) ? errorFlag : 'Error';
                     alert(errorFlag + '\n' + e.message + e);
                 }
-                }
-            )
+            }
+        )
         },
         seekExceptionMessage:function (txt) {
             this.txt = txt;
@@ -185,8 +194,8 @@ define(['dojo',
                     pesan = this.seekExceptionMessage(pesan);
                     alert(errorFlag + '\n00000' + pesan);
                 })
-                }
-            )
+            }
+        )
         },
         getUuid:function () {
             var s = [], itoh = '0123456789ABCDEF';

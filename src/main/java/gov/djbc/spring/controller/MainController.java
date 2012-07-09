@@ -81,7 +81,7 @@ public class MainController {
         return mav;
     }
 
-    @RequestMapping(value = "/barang/{nama}/{merk}")
+    @RequestMapping(value = "/tesbarang/{nama}/{merk}")
     public @ResponseBody
     Iterable<BarangDiInventory> getBarang(@PathVariable String nama, @PathVariable String merk) {
         List<Fentry> fis = Arrays.asList(
