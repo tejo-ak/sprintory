@@ -159,7 +159,7 @@ require([
                     if (!dojote.cekWidget(this.dtlPort)) {
                         this.dtlPort = dojote.preparePortlet('Detail', 2, 'loading detail ..')
                     }
-//                    if (!dojote.cekWidget(this.detailView)) {
+//                    if (!dojot                                              e.cekWidget(this.detailView)) {
                     this.detailView = new lib.DetailView();
 //                    }
                     this.detailView.set('data', dojote.jorder(arg.data, this.detailerFilter))

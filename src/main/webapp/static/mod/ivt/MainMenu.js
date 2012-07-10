@@ -48,11 +48,12 @@ define(['dojo',
                 modul:'mod/ivt/BarangMgt', arg:[
                 {mode:'new', layer:false}
             ]},
-            { menu:'Upload Barang', menuId:'mn001', eventId:'onMenuUploadBarang', modul:'mod/ivt/BarangMgt', arg:[
+            { menu:'Upload Barang', menuId:'mn001', eventId:'onMenuBarangUpload', modul:'mod/ivt/BarangBrowse', arg:[
                 {nocrud:true, sider:'sider', detail:'upload'}
             ]},
-            { menu:'Browse Barang', menuId:'mn002', eventId:'onMenuBarangBrowse', modul:'mod/ivt/BarangBrowse', arg:[
-                {nocrud:false, sider:'sider', detail:'view'}
+            {menu:'Browse Barang', menuId:'mn001', eventId:'onMenuBarangBrowse',
+                modul:'mod/ivt/BarangBrowse', arg:[
+                {mode:'new', layer:false}
             ]},
             { menu:'Supplier MGT', menuId:'mn003', eventId:'', grup:true},
             { menu:'Rekam Supplier', menuId:'mn001', eventId:'onMenuDaftarSupplier', modul:'mod/ivt/SupplierMgt', arg:[

@@ -45,8 +45,8 @@ public class MainController {
     @RequestMapping(value = "/")
     public ModelAndView index() {
         Map m = new HashMap();
-//        m.put("dj", "http://192.168.204.12:8080/dojocdn171/dojolib");
-        m.put("dj", "http://localhost:8080/dojocdn171/dojolib");
+        m.put("dj", "http://192.168.204.12:8080/dojocdn171/dojolib");
+//        m.put("dj", "http://localhost:8080/dojocdn171/dojolib");
         m.put("djext", ".js");
         ModelAndView mav = new ModelAndView("sprintory", m);
         return mav;

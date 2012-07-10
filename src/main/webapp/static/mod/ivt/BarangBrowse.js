@@ -19,7 +19,9 @@ define(['dojo',
     'mod/ivt/BcdtMapMgt'
     ], function (dojo, parser, dijit, tabUtil, accordUtil, dojote) {
         var singleton={
-            init:function(){},
+            init:function(){
+                this.startup();
+            },
             startup:function(){
                 dojo.subscribe('onMenuBarangBrowse',dojo.hitch(this,'prepareBarangBrowse'))
             },
@@ -29,15 +31,17 @@ define(['dojo',
                     dojote.callXhrJsonPost('./barang/browse/form',dojote.initBrowse(),dojo.hitch(this,function(e){
                         if(dojote.cekWidget(this.formBarangBrowse)){
                             this.formBarangBrowse.set('content',e.html)
-                            
                         }
                         this.buildForm();
                     }))
+                }else{
+                    this.fetchGrid(dojote.initBrowse());
                 }
             },
             buildForm:function(){
                 var divGreditor = dojo.query('.gdtBarang',this.formBarangBrowse.domNode);
-                var g = new lib.Greditor({
+                console.log(divGreditor);
+                this.gdtBarang = new lib.Greditor({
                     structure:[
                     {
                         field:'nama', 
@@ -45,9 +49,22 @@ define(['dojo',
                         width:'100%'
                     }
                     ],
+                    paramItems:[
+                    {
+                        field:'nama', 
+                        name:'Nama', 
+                        type:'teks'
+                    }],
                     withEditor:false
-                    
-                })
+                },divGreditor[0]);
+            //                this.fetchGrid(dojote.initBrowse());
+            },
+            fetchGrid:function(fetchParam){
+                dojote.callXhrJsonPost('./barang/browse/fetch',fetchParam,dojo.hitch(this,function(e){
+                    if(e.data && dojote.cekWidget(this.formBarangBrowse)){
+                        this.gdtBarang.setJStore(e.data)
+                    }
+                }))
             }
         }
         singleton.init();

@@ -24,11 +24,15 @@ define(['dojo',
         to4Dec:function (dec) {
             return nomor.format(dec, {pattern:'#,###.####'});
         },
-        initBrowse:function(){
+        initBrowse:function(size){
+            if(!size){
+                var size = 20;
+            }
             var browseParam={
                 init:true,
                 blank:false,
                 all:true,
+                paging:{page:1,size:size},
                 fentries:[]
             }  
             return browseParam;

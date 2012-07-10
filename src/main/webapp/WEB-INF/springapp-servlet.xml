@@ -5,17 +5,21 @@
        xmlns:jpa="http://www.springframework.org/schema/data/jpa"
        xmlns:mvc="http://www.springframework.org/schema/mvc" 
        xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:util="http://www.springframework.org/schema/util"
+
        xsi:schemaLocation="
+        http://www.springframework.org/schema/beans 
+        http://www.springframework.org/schema/beans/spring-beans-3.1.xsd
         http://www.springframework.org/schema/aop 
         http://www.springframework.org/schema/aop/spring-aop-3.1.xsd
         http://www.springframework.org/schema/data/jpa
         http://www.springframework.org/schema/data/jpa/spring-jpa-1.0.xsd
         http://www.springframework.org/schema/mvc 
         http://www.springframework.org/schema/mvc/spring-mvc-3.1.xsd
-        http://www.springframework.org/schema/beans 
-        http://www.springframework.org/schema/beans/spring-beans-3.1.xsd
         http://www.springframework.org/schema/context 
-        http://www.springframework.org/schema/context/spring-context-3.1.xsd">
+        http://www.springframework.org/schema/context/spring-context-3.1.xsd
+        http://www.springframework.org/schema/util 
+        http://www.springframework.org/schema/util/spring-util-2.0.xsd">
 
 	<!-- DispatcherServlet Context: defines this servlet's request-processing 
 		infrastructure -->
@@ -23,7 +27,7 @@
 	<!-- Scans within the base package of the application for @Components to 
 		configure as beans -->
 	<!-- @Controller, @Service, @Configuration, etc. -->
-    <context:component-scan base-package="gov.djbc.spring.controller" />
+    <context:component-scan base-package="gov.djbc.spring" />
 	<!-- Enables the Spring MVC @Controller programming model -->
     <mvc:annotation-driven />
 	<!-- Enables static content -->
@@ -36,8 +40,20 @@
     <bean
         class="org.springframework.web.servlet.mvc.annotation.DefaultAnnotationHandlerMapping">
     </bean>-->
+    <bean id="responseInScopeFilter" class="gov.djbc.spring.util.ResponseInScopeFilter">
+        
+    </bean> 
+    <bean id="httpServletResponseFactoryBean" 
+          class="gov.djbc.spring.util.HttpServletResponseFactoryBean">
+        <property name="responseInScopeFilter">
+            <ref local="responseInScopeFilter"/>
+        </property>
 
+    </bean>
 	<!-- Konfigurasi Template Velocity -->
+    <util:map id="jout" key-type="java.lang.String" value-type="java.lang.Object">
+        <entry key="pechorin" value="pechorin@hero.org"/>
+    </util:map>
     <bean id="velocityConfig"
           class="org.springframework.web.servlet.view.velocity.VelocityConfigurer">
         <property name="resourceLoaderPath" value="/WEB-INF/velocity/" />
@@ -47,7 +63,6 @@
         <property name="cache" value="true" />
         <property name="prefix" value="" />
         <property name="suffix" value=".html" />
-
 		<!-- if you want to use the Spring Velocity macros, set this property to -->
 		<!-- true -->
         <property name="exposeSpringMacroHelpers" value="true" />
