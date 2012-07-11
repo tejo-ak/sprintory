@@ -88,7 +88,7 @@ require([
                 this.btnNext = dojo.query('.btnNext', this.domNode)[0];
                 this.txtPage = dojote.byName('currentpage');
                 if (!this.btnAddHandler)
-                    this.btnAddHandler = dojo.connect(this.btnAdd, 'onclick', dojo.hitch(this, this.onAdd))
+                    this.btnAddHandler = dojo.connect(this.btnAdd, 'onclick', dojo.hitch(this, 'onTambah'))
                 if (!this.onKeyPressHandler)
                     this.onKeyPressHandler = dojo.connect(this.domNode, 'onkeypress', dojote.thitch(this, this.onTekan))
                 var grediform = this.getGrediform();
@@ -198,13 +198,7 @@ require([
                 return e;
             },
             editing:false,
-            onAdd:function () {
-                var gdf = this.getGrediform();
-                if (gdf) {
-                    this.editing = true;
-                    gdf.show();
-                    gdf.clear();
-                }
+            onTambah:function (e) {
             },
             onTekan:function (e) {
 
@@ -279,6 +273,19 @@ require([
                     this.queri();
                 }), this.param);
 
+            },
+            saveCommand:'save_detail',
+            _setSaveCommandAttr:function (saveCommand) {
+                this._set('saveCommand', saveCommand);
+            },
+            fetchCommand:'fetch',
+            _setFetchCommandAttr:function (fetchCommand) {
+                this._set('fetchCommand', fetchCommand);
+            },
+
+            delCommand:'del_detail',
+            _setDelCommandAttr:function (delCommand) {
+                this._set('delCommand', delCommand);
             },
             grediform:null,
             _setGrediformAttr:function (grediform) {

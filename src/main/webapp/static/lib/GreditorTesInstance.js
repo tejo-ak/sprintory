@@ -82,7 +82,7 @@ define(['dojo',
                     }))
                 if (!this.gClickHandler)
                     this.gClickHandler = dojo.connect(g, 'onGridClick', dojo.hitch(this, function (e) {
-                        console.log('this is grid single click handler from client code')
+                        console.log('this is grid single click handler from client codesszz')
                     }))
 
             }
