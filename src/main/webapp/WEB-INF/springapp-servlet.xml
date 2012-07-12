@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
-       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xmlns:aop="http://www.springframework.org/schema/aop"
        xmlns:jpa="http://www.springframework.org/schema/data/jpa"
-       xmlns:mvc="http://www.springframework.org/schema/mvc" 
+       xmlns:mvc="http://www.springframework.org/schema/mvc"
        xmlns:context="http://www.springframework.org/schema/context"
        xmlns:util="http://www.springframework.org/schema/util"
 
@@ -21,77 +21,96 @@
         http://www.springframework.org/schema/util 
         http://www.springframework.org/schema/util/spring-util-2.0.xsd">
 
-	<!-- DispatcherServlet Context: defines this servlet's request-processing 
-		infrastructure -->
+    <!-- DispatcherServlet Context: defines this servlet's request-processing
+         infrastructure -->
 
-	<!-- Scans within the base package of the application for @Components to 
-		configure as beans -->
-	<!-- @Controller, @Service, @Configuration, etc. -->
-    <context:component-scan base-package="gov.djbc.spring" />
-	<!-- Enables the Spring MVC @Controller programming model -->
-    <mvc:annotation-driven />
-	<!-- Enables static content -->
-    <mvc:resources mapping="/site_media/**" location="/static/" />
-    <mvc:default-servlet-handler />
-	
-	<!-- also add the following beans to get rid of some exceptions -->
-        <!-- <bean
+    <!-- Scans within the base package of the application for @Components to
+         configure as beans -->
+    <!-- @Controller, @Service, @Configuration, etc. -->
+    <context:component-scan base-package="gov.djbc.spring"/>
+    <!-- Enables the Spring MVC @Controller programming model -->
+    <mvc:annotation-driven/>
+    <!-- Enables static content -->
+    <mvc:resources mapping="/site_media/**" location="/static/"/>
+    <mvc:default-servlet-handler/>
+
+    <!-- also add the following beans to get rid of some exceptions -->
+    <!-- <bean
         class="org.springframework.web.servlet.mvc.annotation.AnnotationMethodHandlerAdapter" />
     <bean
         class="org.springframework.web.servlet.mvc.annotation.DefaultAnnotationHandlerMapping">
     </bean>-->
     <bean id="responseInScopeFilter" class="gov.djbc.spring.util.ResponseInScopeFilter">
-        
-    </bean> 
-    <bean id="httpServletResponseFactoryBean" 
+
+    </bean>
+    <bean id="httpServletResponseFactoryBean"
           class="gov.djbc.spring.util.HttpServletResponseFactoryBean">
         <property name="responseInScopeFilter">
             <ref local="responseInScopeFilter"/>
         </property>
 
     </bean>
-	<!-- Konfigurasi Template Velocity -->
+    <!-- Konfigurasi Template Velocity -->
     <util:map id="jout" key-type="java.lang.String" value-type="java.lang.Object">
         <entry key="pechorin" value="pechorin@hero.org"/>
     </util:map>
     <bean id="velocityConfig"
           class="org.springframework.web.servlet.view.velocity.VelocityConfigurer">
-        <property name="resourceLoaderPath" value="/WEB-INF/velocity/" />
+        <property name="resourceLoaderPath" value="/WEB-INF/velocity/"/>
     </bean>
     <bean id="viewResolver"
           class="org.springframework.web.servlet.view.velocity.VelocityViewResolver">
-        <property name="cache" value="true" />
-        <property name="prefix" value="" />
-        <property name="suffix" value=".html" />
-		<!-- if you want to use the Spring Velocity macros, set this property to -->
-		<!-- true -->
-        <property name="exposeSpringMacroHelpers" value="true" />
+        <property name="cache" value="true"/>
+        <property name="prefix" value=""/>
+        <property name="suffix" value=".html"/>
+        <!-- if you want to use the Spring Velocity macros, set this property to -->
+        <!-- true -->
+        <property name="exposeSpringMacroHelpers" value="true"/>
     </bean>
+    <!-- Support JSON Message Converter -->
+    <bean id="messageAdapter" class="org.springframework.web.servlet.mvc.annotation.AnnotationMethodHandlerAdapter">
+        <property name="messageConverters">
+            <list>
+                <!-- Support JSON -->
+                <bean class="org.springframework.http.converter.json.MappingJacksonHttpMessageConverter"/>
+            </list>
+        </property>
+    </bean>
+    <bean id="exceptionMessageAdapter"
+          class="org.springframework.web.servlet.mvc.annotation.AnnotationMethodHandlerExceptionResolver">
+        <property name="messageConverters">
+            <list>
+                <!-- Support JSON -->
+                <bean class="org.springframework.http.converter.json.MappingJacksonHttpMessageConverter"/>
+            </list>
+        </property>
+    </bean>
+
     <!-- Data Source -->
-    
+
     <context:property-placeholder
-        location="classpath*:META-INF/database.properties" />
+            location="classpath*:META-INF/database.properties"/>
 
     <import resource="database.xml"/>
-        <!-- Directory to scan for repository classes -->
+    <!-- Directory to scan for repository classes -->
     <bean class="org.springframework.orm.jpa.JpaTransactionManager"
           id="transactionManager">
         <property name="entityManagerFactory"
-                  ref="entityManagerFactory" />
+                  ref="entityManagerFactory"/>
         <property name="jpaDialect">
-            <bean class="org.springframework.orm.jpa.vendor.HibernateJpaDialect" />
+            <bean class="org.springframework.orm.jpa.vendor.HibernateJpaDialect"/>
         </property>
     </bean>
     <bean id="entityManagerFactory"
           class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">
-        <property name="dataSource" ref="dataSource" />
+        <property name="dataSource" ref="dataSource"/>
         <property name="jpaVendorAdapter">
             <bean class="org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter">
-                <property name="generateDdl" value="true" />
-                <property name="showSql" value="true" />
-                <property name="database" value="MYSQL" />
+                <property name="generateDdl" value="true"/>
+                <property name="showSql" value="true"/>
+                <property name="database" value="MYSQL"/>
             </bean>
         </property>
     </bean>
-    <jpa:repositories base-package="gov.djbc.spring.repository" />
+    <jpa:repositories base-package="gov.djbc.spring.repository"/>
 </beans>

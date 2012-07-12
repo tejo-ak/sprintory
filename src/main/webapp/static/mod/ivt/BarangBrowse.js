@@ -68,10 +68,11 @@ define(['dojo',
         fetchGrid:function (fetchParam) {
             console.log('this is onfetc')
             console.log(fetchParam);
-            dojote.callXhrJsonPost('./barang/browse/fetch', {init:{'inisial':'nama', 'alamat':'rawamangun'}}, dojo.hitch(this, function (e) {
+            dojote.callXhrJspringPost('./barang/browse/fetch', {alias:'alias',stringValue:'isi parameter'}, dojo.hitch(this, function (e) {
                 if (e.data && dojote.cekWidget(this.formBarangBrowse)) {
                     console.log(e.data);
-                    this.gdtBarang.setJStore(e.data)
+                    this.gdtBarang.setJStore(e.data)               ;
+
                 }
             }))
         }

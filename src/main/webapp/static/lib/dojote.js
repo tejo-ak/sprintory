@@ -24,17 +24,17 @@ define(['dojo',
         to4Dec:function (dec) {
             return nomor.format(dec, {pattern:'#,###.####'});
         },
-        initBrowse:function(size){
-            if(!size){
+        initBrowse:function (size) {
+            if (!size) {
                 var size = 20;
             }
-            var browseParam={
+            var browseParam = {
                 init:true,
                 blank:false,
                 all:true,
-                paging:{page:1,size:size},
+                paging:{page:1, size:size},
                 fentries:[]
-            }  
+            }
             return browseParam;
         },
         toDate:function (date) {
@@ -154,16 +154,16 @@ define(['dojo',
                     errorFlag = (errorFlag) ? errorFlag : 'Error';
                     alert(errorFlag + '\n' + e.message);
                 }
-            }
-        )
+                }
+            )
         },
         callXhrPost:function (url, content, load, errorFlag) {
             dojo.xhrPost({url:url, content:content, load:load, error:function (e) {
                     errorFlag = (errorFlag) ? errorFlag : 'Error';
                     alert(errorFlag + '\n' + e.message + e);
                 }
-            }
-        )
+                }
+            )
         },
         seekExceptionMessage:function (txt) {
             this.txt = txt;
@@ -198,8 +198,20 @@ define(['dojo',
                     pesan = this.seekExceptionMessage(pesan);
                     alert(errorFlag + '\n00000' + pesan);
                 })
-            }
-        )
+                }
+            )
+        },
+        callXhrJspringPost:function (url, content, load, errorFlag) {
+            dojo.xhrPost({url:url, content:content, load:load,
+                    headers:{ "Content-Type":"application/json", "Accept":"application/json" },
+                    handleAs:'json', error:dojo.hitch(this, function (e, obj) {
+                        errorFlag = (errorFlag) ? errorFlag : 'Error';
+                        var pesan = (obj && obj.xhr && obj.xhr.response) ? obj.xhr.response : e;
+                        pesan = this.seekExceptionMessage(pesan);
+                        alert(errorFlag + '\n00000' + pesan);
+                    })
+                }
+            )
         },
         getUuid:function () {
             var s = [], itoh = '0123456789ABCDEF';

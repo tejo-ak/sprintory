@@ -19,6 +19,7 @@ import javax.servlet.http.HttpServletResponse;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 /**
@@ -46,11 +47,11 @@ public class BarangController {
         return p;
     }
 
-    @RequestMapping(value = "/browse/fetch")
+    @RequestMapping(value = "/browse/fetch",method = RequestMethod.POST)
     public
     @ResponseBody
-    Map<String, Object> fetchBarang(@RequestBody String init) {
-        System.out.println("paging " + init);
+    Map<String, Object> fetchBarang(@RequestBody Fentry init,String waktu) {
+        System.out.println("paging " + init.getAlias());
         Map<String, Object> p = new HashMap<String, Object>();
         p.put("data", repo.findAll());
         return p;
