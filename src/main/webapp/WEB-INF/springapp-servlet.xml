@@ -29,7 +29,11 @@
     <!-- @Controller, @Service, @Configuration, etc. -->
     <context:component-scan base-package="gov.djbc.spring"/>
     <!-- Enables the Spring MVC @Controller programming model -->
-    <mvc:annotation-driven/>
+    <mvc:annotation-driven>
+        <mvc:argument-resolvers>
+            <bean class="gov.djbc.util.PathEntityMethodArgumentResolver"/>
+        </mvc:argument-resolvers>
+    </mvc:annotation-driven>
     <!-- Enables static content -->
     <mvc:resources mapping="/site_media/**" location="/static/"/>
     <mvc:default-servlet-handler/>

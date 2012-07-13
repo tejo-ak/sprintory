@@ -6,18 +6,16 @@ package gov.djbc.spring.controller;
 
 import gov.djbc.spring.entity.Barang;
 import gov.djbc.spring.filter.Fentry;
-import gov.djbc.spring.filter.Paging;
 import gov.djbc.spring.repository.BarangRepository;
 import gov.djbc.spring.util.StringView;
 
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 import javax.inject.Inject;
 import javax.servlet.http.HttpServletResponse;
 
+import gov.djbc.util.RequestObject;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -47,11 +45,12 @@ public class BarangController {
         return p;
     }
 
-    @RequestMapping(value = "/browse/fetch",method = RequestMethod.POST)
+    @RequestMapping(value = "/browse/fetch", method = RequestMethod.POST)
     public
     @ResponseBody
-    Map<String, Object> fetchBarang(@RequestBody Fentry init,String waktu) {
-        System.out.println("paging " + init.getAlias());
+    Map<String, Object> fetchBarang(@RequestObject Fentry fentry, @RequestObject Barang barang) {
+        System.out.println("Fentry Found " + fentry.getAlias());
+        System.out.println("Alias found" + barang.getNama());
         Map<String, Object> p = new HashMap<String, Object>();
         p.put("data", repo.findAll());
         return p;
