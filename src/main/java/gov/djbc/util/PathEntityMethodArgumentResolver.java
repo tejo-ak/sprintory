@@ -36,40 +36,17 @@ public class PathEntityMethodArgumentResolver implements HandlerMethodArgumentRe
 
 
         HttpServletRequest httpServletRequest = webRequest.getNativeRequest(HttpServletRequest.class);
-        BufferedReader br = null;
-//        br = httpServletRequest.getReader();
+        String strVal = httpServletRequest.getParameter(parameterName);
         String baris = "";
-
-        byte[] inByte = new byte[httpServletRequest.getContentLength()];
-        InputStream sin = httpServletRequest.getInputStream();
-        sin.read(inByte);
-        InputStream in = new ByteArrayInputStream(inByte);
-
-
-        br = new BufferedReader(new InputStreamReader(in));
         ObjectMapper mapper = new ObjectMapper();
         Object f = null;
         try {
-//           
-            JsonParser jp = mapper.getJsonFactory().createJsonParser(br);
-            jp = mapper.getJsonFactory().createJsonParser(br);
+            JsonParser jp = mapper.getJsonFactory().createJsonParser(strVal);
             JsonNode jn = mapper.readTree(jp);
-            JsonNode jfent = jn.get(parameterName);
-            f = mapper.readValue(jfent, parameter.getParameterType());
-
-            br.mark(0);
-            br.reset();
+            f = mapper.readValue(jn, parameter.getParameterType());
         } catch (IOException e) {
             e.printStackTrace();  //To change body of catch statement use File | Settings | File Templates.
         }
-//        while ((baris = br.readLine()) != null) {
-//            System.out.println("entry json per parameter:" + baris);
-//        }
-//        br.mark(0);
-////        br.reset();
-        System.out.println("map" + f);
-
-
         return f;  //To change body of implemented methods use File | Settings | File Templates.
     }
 }

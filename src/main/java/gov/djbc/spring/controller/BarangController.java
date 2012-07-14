@@ -12,12 +12,14 @@ import gov.djbc.spring.util.StringView;
 import java.util.HashMap;
 import java.util.Map;
 import javax.inject.Inject;
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import gov.djbc.util.RequestObject;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 /**
@@ -49,8 +51,8 @@ public class BarangController {
     public
     @ResponseBody
     Map<String, Object> fetchBarang(@RequestObject Fentry fentry, @RequestObject Barang barang) {
-        System.out.println("Fentry Found " + fentry.getAlias());
-        System.out.println("Alias found" + barang.getNama());
+        System.out.println("Fentry Found " + fentry);
+        System.out.println("Barang found" + barang);
         Map<String, Object> p = new HashMap<String, Object>();
         p.put("data", repo.findAll());
         return p;

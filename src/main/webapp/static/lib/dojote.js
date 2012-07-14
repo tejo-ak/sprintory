@@ -192,6 +192,12 @@ define(['dojo',
             return tuple
         },
         callXhrJsonPost:function (url, content, load, errorFlag) {
+            for (k in content) {
+                if (typeof content[k] == "object") {
+                    //update content that is object into json string
+                    content[k] = dojo.toJson(content[k]);
+                }
+            }
             dojo.xhrPost({url:url, content:content, load:load, handleAs:'json', error:dojo.hitch(this, function (e, obj) {
                     errorFlag = (errorFlag) ? errorFlag : 'Error';
                     var pesan = (obj && obj.xhr && obj.xhr.response) ? obj.xhr.response : e;
